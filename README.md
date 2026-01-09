@@ -1,2 +1,4 @@
 # valorent.github.io
-Yeah
+Yes
+
+Proper

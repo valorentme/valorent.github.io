@@ -1,0 +1,1 @@
+wss://s15649.fra1.piesocket.com/v3/1?api_key=xJVGaTJDiw9hfBQ7nmKLQw19XzyhK6IehISbgd6A&notify_self=1
